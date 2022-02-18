@@ -1,53 +1,5 @@
 import styled from "@emotion/styled";
 
-export const Background = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* padding: 0px 105px 0px 105px; */
-`;
-
-export const Wrapper = styled.div`
-  width: 85%;
-
-  padding-top: 40px;
-  color: #323d45;
-  /* background-color: aliceblue; */
-  display: flex;
-
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const TopWrapper = styled.div`
-  width: 100%;
-`;
-
-export const Title = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-export const Remark = styled.div``;
-
-export const OptionWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-export const Toggles = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-bottom: 38px;
-  padding-right: 16px;
-`;
-
-export const ToggleRemark = styled.div``;
-
 export const ContainerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;

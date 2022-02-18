@@ -13,6 +13,7 @@
     "@types/node": "^17.0.18",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "axios": "^0.26.0",
     "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "json-server": "json-server --watch db.json --port 5000",
+    "dev": "concurrently \"yarn start\" \"yarn run json-server\""
   },
   "eslintConfig": {
     "extends": [
