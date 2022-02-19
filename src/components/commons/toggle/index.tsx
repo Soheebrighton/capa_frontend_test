@@ -11,6 +11,7 @@ export default function Toggle(props: IPropsToggle) {
   const handleChange = () => {
     props.setIsOn((prev) => !prev);
   };
+
   return (
     <div>
       <Switch {...label} onChange={handleChange} />

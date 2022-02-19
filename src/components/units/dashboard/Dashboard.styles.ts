@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { ReactComponent as Refresh } from "../../commons/icons/refresh.svg";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { breakPoints } from "../../../commons/styles/media";
+
 export const Background = styled.div`
   display: flex;
   flex-direction: column;

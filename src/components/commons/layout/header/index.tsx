@@ -63,11 +63,13 @@ const MenuOption = styled.div`
   font-weight: 500;
   padding: 0px 0px 20px 30px;
 `;
+
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const onClickMenuOpen = () => {
     setOpenMenu(true);
   };
+
   return (
     <>
       <Wrapper>
