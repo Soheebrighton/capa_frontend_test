@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const ContainerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   width: 100%;
-
-  /* background-color: yellow; */
 `;
 
 export const Container = styled.div`
@@ -22,6 +20,12 @@ export const Container = styled.div`
   box-sizing: border-box;
   :hover {
     border: 2px solid #2196f3;
+  }
+  @media ${breakPoints.tablet} {
+    width: 330px;
+  }
+  @media ${breakPoints.mobile} {
+    width: 300px;
   }
 `;
 
@@ -75,7 +79,6 @@ export const DetailContent = styled.div`
 export const Buttons = styled.div`
   display: flex;
   flex-direction: row;
-  /* padding-bottom: 24px; */
 `;
 
 export const EmptyContainer = styled.div`

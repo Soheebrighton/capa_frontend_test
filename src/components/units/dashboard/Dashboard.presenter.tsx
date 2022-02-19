@@ -17,7 +17,8 @@ export default function DashboardUI(props: IPropsDashboardUI) {
             <S.Selections>
               <div>
                 <S.Select onClick={props.onClickMethod}>
-                  가공방식 <S.IconArrow />
+                  가공방식
+                  <S.IconArrow />
                 </S.Select>
                 {props.isMethod && (
                   <S.SelectListWrapper1>
@@ -83,7 +84,6 @@ export default function DashboardUI(props: IPropsDashboardUI) {
             </S.Toggles>
           </S.OptionWrapper>
           <S.ContainerWrapper>
-            {/* // 디폴트 // */}
             {props.isOn
               ? props.methodsCheckedList.length === 0 &&
                 props.materialsCheckedList.length === 0 && (
@@ -94,7 +94,6 @@ export default function DashboardUI(props: IPropsDashboardUI) {
                   <List stores={props.stores} />
                 )}
 
-            {/* 가공방식만 선택 */}
             {props.isOn
               ? props.methodsCheckedList.length > 0 &&
                 props.materialsCheckedList.length === 0 && (
@@ -118,7 +117,6 @@ export default function DashboardUI(props: IPropsDashboardUI) {
                   />
                 )}
 
-            {/* 재료만 선택 */}
             {props.isOn
               ? props.materialsCheckedList.length > 0 &&
                 props.methodsCheckedList.length === 0 && (
@@ -142,7 +140,6 @@ export default function DashboardUI(props: IPropsDashboardUI) {
                   />
                 )}
 
-            {/* 둘다 교차선택 */}
             {props.isOn
               ? props.materialsCheckedList.length > 0 &&
                 props.methodsCheckedList.length > 0 && (

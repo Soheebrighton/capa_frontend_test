@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { ReactComponent as Arrow } from "../../commons/icons/arrow_drop_down.svg";
 import { ReactComponent as Refresh } from "../../commons/icons/refresh.svg";
-
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { breakPoints } from "../../../commons/styles/media";
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,10 +13,15 @@ export const Wrapper = styled.div`
   width: 1100px;
   padding-top: 40px;
   color: #323d45;
-  display: flex;
-
+  display: grid;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 750px;
+  }
+  @media ${breakPoints.mobile} {
+    width: min-content;
+  }
 `;
 
 export const TopWrapper = styled.div`
@@ -36,15 +41,11 @@ export const OptionWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
   padding: 32px 0px;
-`;
-
-export const IconArrow = styled(Arrow)`
-  padding-left: 12px;
-  fill: #939fa5;
-  :focus {
-    fill: white;
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -61,17 +62,17 @@ export const Select = styled.button`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  color: #565656;
   :hover {
     border: 1px solid #2196f3;
     cursor: pointer;
   }
   :focus {
     background-color: #1565c0;
-    color: white;
-    fill: white;
+    color: #fff;
   }
 `;
+export const IconArrow = styled(ArrowDropDownIcon)``;
 
 export const SelectListWrapper1 = styled.div`
   width: 98px;
@@ -107,6 +108,7 @@ export const Selections = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  z-index: 1;
 `;
 
 export const IconRefresh = styled(Refresh)`
@@ -126,6 +128,10 @@ export const Toggles = styled.div`
   flex-direction: row;
   align-items: center;
   padding-right: 16px;
+
+  @media ${breakPoints.mobile} {
+    padding-top: 20px;
+  }
 `;
 
 export const ToggleRemark = styled.div``;
