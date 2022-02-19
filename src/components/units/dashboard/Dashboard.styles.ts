@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ReactComponent as Arrow } from "../../commons/icons/arrow_drop_down.svg";
 
 export const Background = styled.div`
   display: flex;
@@ -9,8 +10,7 @@ export const Background = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 85%;
-
+  width: 1100px;
   padding-top: 40px;
   color: #323d45;
   /* background-color: aliceblue; */
@@ -35,14 +35,83 @@ export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
+
+  padding: 32px 0px;
+`;
+
+export const IconArrow = styled(Arrow)`
+  padding-left: 8px;
+  fill: #939fa5;
+  :focus {
+    fill: white;
+  }
+`;
+
+export const Select = styled.button`
+  width: 98px;
+  height: 32px;
+  padding: 4px 12px;
+  margin-right: 8px;
+  border: 1px solid #939fa5;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 4px;
+
+  :hover {
+    border: 1px solid #2196f3;
+    cursor: pointer;
+  }
+  :focus {
+    background-color: #1565c0;
+    color: white;
+    fill: white;
+  }
+`;
+
+export const SelectListWrapper1 = styled.div`
+  width: 130px;
+  border-radius: 4px;
+  border: 1px solid #939fa5;
+  position: absolute;
+  background-color: white;
+  padding: 17px 12px 9px 12px;
+  box-sizing: border-box;
+`;
+
+export const SelectListWrapper2 = styled.div`
+  width: 140px;
+  border-radius: 4px;
+  border: 1px solid #939fa5;
+  position: absolute;
+  background-color: white;
+  padding: 17px 12px 9px 12px;
+  margin-left: 105px;
+  box-sizing: border-box;
+`;
+
+export const Option = styled.div`
+  padding-bottom: 8px;
+`;
+export const CheckOption = styled.input`
+  border: 2px solid #939fa5;
+  :focus {
+    background-color: red;
+  }
+  margin-right: 10px;
+`;
+export const Selections = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const Toggles = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-bottom: 38px;
+  /* background-color: cadetblue; */
+
   padding-right: 16px;
 `;
 
@@ -56,71 +125,14 @@ export const ContainerWrapper = styled.div`
   /* background-color: yellow; */
 `;
 
-export const Container = styled.div`
-  height: 332px;
-  width: 350px;
+export const EmptyContainer = styled.div`
+  border: 1px solid #c2c2c2;
   border-radius: 4px;
-  border: 1px solid #e5e5e5;
-  margin: 0px 16px 16px 0px;
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  :hover {
-    border: 2px solid #2196f3;
-  }
-`;
-
-export const TopContents = styled.div`
-  border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 16px;
-`;
-
-export const ItemTitle = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-  padding-bottom: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const Status = styled.div`
-  border: 1px solid #ffa000;
-  width: max-content;
-  color: #ffa000;
-  border-radius: 12px;
-  padding: 2px 8px;
-  font-size: 12px;
-`;
-
-export const Client = styled.div``;
-
-export const Date = styled.div`
-  padding-top: 24px;
   color: #939fa5;
-`;
-
-export const BottomContents = styled.div``;
-
-export const Details = styled.div`
+  width: 100%;
+  height: 100px;
   display: flex;
   flex-direction: row;
-  padding-bottom: 10px;
-`;
-
-export const TitleContent = styled.div`
-  width: 70px;
-  padding-right: 32px;
-`;
-
-export const DetailContent = styled.div`
-  font-weight: 700;
-`;
-
-export const Buttons = styled.div`
-  display: flex;
-  flex-direction: row;
-  /* padding-bottom: 24px; */
+  justify-content: center;
+  align-items: center;
 `;

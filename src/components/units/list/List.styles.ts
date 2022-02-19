@@ -5,6 +5,7 @@ export const ContainerWrapper = styled.div`
   flex-wrap: wrap;
   /* justify-content: space-between; */
   width: 100%;
+
   /* background-color: yellow; */
 `;
 

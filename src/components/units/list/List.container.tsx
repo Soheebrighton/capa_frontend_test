@@ -4,7 +4,7 @@ import ColorBtn from "../../commons/buttons/colorbutton";
 import WhiteBtn from "../../commons/buttons/whitebutton";
 
 interface IPropsList {
-  stores: never[];
+  stores: any[];
 }
 
 export default function List(props: IPropsList) {

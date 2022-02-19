@@ -1,5 +1,5 @@
 import "./App.css";
-import Dashboard from "./components/units/dashboard/Dashboard.presenter";
+import Dashboard from "./components/units/dashboard/Dashboard.container";
 import Header from "./components/units/header";
 
 function App() {
