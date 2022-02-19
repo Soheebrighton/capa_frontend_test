@@ -3,8 +3,6 @@ import * as S from "./Dashboard.styles";
 import Toggle from "../../commons/toggle/index";
 import List from "../list/List.container";
 import { IPropsDashboardUI } from "./Dashboard.types";
-import FilterMaterial from "../filter/material/FilterMaterial.container";
-import FilterMethod from "../filter/method";
 
 export default function DashboardUI(props: IPropsDashboardUI) {
   return (
@@ -27,29 +25,39 @@ export default function DashboardUI(props: IPropsDashboardUI) {
                       <S.Option>
                         <S.CheckOption
                           type="checkbox"
-                          onChange={props.onChangedChecked(el)}
+                          onChange={props.onChangedMethodChecked(el)}
                           checked={
-                            props.checkedList.includes(el) ? true : false
+                            props.methodsCheckedList.includes(el) ? true : false
                           }
+                          id="methodActive"
                         />
                         {el}
                       </S.Option>
                     ))}
                   </S.SelectListWrapper1>
                 )}
-
-                <S.Select onClick={props.onClickMaterial}>
-                  재료 <S.IconArrow />
-                </S.Select>
               </div>
+
               <div>
+                <S.Select onClick={props.onClickMaterial}>
+                  재료
+                  {props.materialsCheckedList.length > 0 &&
+                    `(${props.materialsCheckedList.length})`}
+                  <S.IconArrow />
+                </S.Select>
                 {props.isMaterial && (
                   <S.SelectListWrapper2>
                     {props.materials.map((el: any) => (
                       <S.Option>
                         <S.CheckOption
                           type="checkbox"
-                          onChange={props.onChangedChecked(el)}
+                          onChange={props.onChangedMaterialChecked(el)}
+                          checked={
+                            props.materialsCheckedList.includes(el)
+                              ? true
+                              : false
+                          }
+                          id="materialActive"
                         />
                         {el}
                       </S.Option>
@@ -57,7 +65,16 @@ export default function DashboardUI(props: IPropsDashboardUI) {
                   </S.SelectListWrapper2>
                 )}
               </div>
-              <FilterMethod /> <FilterMaterial />
+
+              {!(
+                props.materialsCheckedList.length === 0 &&
+                props.methodsCheckedList.length === 0
+              ) && (
+                <S.RefreshBtn onClick={props.onClickRefresh}>
+                  <S.IconRefresh />
+                  필터링 리셋
+                </S.RefreshBtn>
+              )}
             </S.Selections>
 
             <S.Toggles>
@@ -66,23 +83,101 @@ export default function DashboardUI(props: IPropsDashboardUI) {
             </S.Toggles>
           </S.OptionWrapper>
           <S.ContainerWrapper>
-            {!props.isOn && props.checkedList.length !== 0 && (
-              <List
-                stores={props.stores.filter(
-                  (el: any) =>
-                    // el.method.some((a: any) => checkedList.includes(a))
-                    props.checkedList.some((a: any) => el.method.includes(a)) &&
-                    props.checkedList.some((a: any) => el.material.includes(a))
+            {/* // 디폴트 // */}
+            {props.isOn
+              ? props.methodsCheckedList.length === 0 &&
+                props.materialsCheckedList.length === 0 && (
+                  <List stores={props.onList} />
+                )
+              : props.methodsCheckedList.length === 0 &&
+                props.materialsCheckedList.length === 0 && (
+                  <List stores={props.stores} />
                 )}
-              />
-            )}
-            {!props.isOn && props.checkedList.length === 0 && (
-              <List stores={props.stores} />
-            )}
-            {props.isOn && <List stores={props.onList} />}
-          </S.ContainerWrapper>
 
-          <S.EmptyContainer>조건에 맞는 견적 요청이 없습니다.</S.EmptyContainer>
+            {/* 가공방식만 선택 */}
+            {props.isOn
+              ? props.methodsCheckedList.length > 0 &&
+                props.materialsCheckedList.length === 0 && (
+                  <List
+                    stores={props.stores.filter((el: any) =>
+                      props.methodsCheckedList.some(
+                        (a: any) =>
+                          el.method.includes(a) && el.status === "상담중"
+                      )
+                    )}
+                  />
+                )
+              : props.methodsCheckedList.length > 0 &&
+                props.materialsCheckedList.length === 0 && (
+                  <List
+                    stores={props.stores.filter((el: any) =>
+                      props.methodsCheckedList.some((a: any) =>
+                        el.method.includes(a)
+                      )
+                    )}
+                  />
+                )}
+
+            {/* 재료만 선택 */}
+            {props.isOn
+              ? props.materialsCheckedList.length > 0 &&
+                props.methodsCheckedList.length === 0 && (
+                  <List
+                    stores={props.stores.filter((el: any) =>
+                      props.materialsCheckedList.some(
+                        (a: any) =>
+                          el.material.includes(a) && el.status === "상담중"
+                      )
+                    )}
+                  />
+                )
+              : props.materialsCheckedList.length > 0 &&
+                props.methodsCheckedList.length === 0 && (
+                  <List
+                    stores={props.stores.filter((el: any) =>
+                      props.materialsCheckedList.some((a: any) =>
+                        el.material.includes(a)
+                      )
+                    )}
+                  />
+                )}
+
+            {/* 둘다 교차선택 */}
+            {props.isOn
+              ? props.materialsCheckedList.length > 0 &&
+                props.methodsCheckedList.length > 0 && (
+                  <List
+                    stores={props.stores.filter((el: any) =>
+                      props.materialsCheckedList.some(
+                        (a: any) =>
+                          props.methodsCheckedList.some((a: any) =>
+                            el.method.includes(a)
+                          ) &&
+                          props.materialsCheckedList.some((a: any) =>
+                            el.material.includes(a)
+                          ) &&
+                          el.status === "상담중"
+                      )
+                    )}
+                  />
+                )
+              : props.materialsCheckedList.length > 0 &&
+                props.methodsCheckedList.length > 0 && (
+                  <List
+                    stores={props.stores.filter((el: any) =>
+                      props.materialsCheckedList.some(
+                        (a: any) =>
+                          props.methodsCheckedList.some((a: any) =>
+                            el.method.includes(a)
+                          ) &&
+                          props.materialsCheckedList.some((a: any) =>
+                            el.material.includes(a)
+                          )
+                      )
+                    )}
+                  />
+                )}
+          </S.ContainerWrapper>
         </S.Wrapper>
       </S.Background>
     </>

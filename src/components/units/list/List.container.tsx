@@ -8,6 +8,8 @@ interface IPropsList {
 }
 
 export default function List(props: IPropsList) {
+  const countList = props.stores.length;
+
   return (
     <>
       {props.stores.map((el: any) => (
@@ -50,6 +52,9 @@ export default function List(props: IPropsList) {
           </S.Buttons>
         </S.Container>
       ))}
+      {countList === 0 && (
+        <S.EmptyContainer>조건에 맞는 견적 요청이 없습니다.</S.EmptyContainer>
+      )}
     </>
   );
 }

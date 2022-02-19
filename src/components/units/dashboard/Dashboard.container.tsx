@@ -1,6 +1,6 @@
 import DashboardUI from "./Dashboard.presenter";
 import axios from "axios";
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [stores, setStores] = useState<any[]>([]);
@@ -9,8 +9,6 @@ export default function Dashboard() {
       setStores(data.data.requests);
     });
   }, []);
-
-  console.log(stores);
 
   const onList = stores.filter((el: any) => el.status === "상담중");
 
@@ -21,23 +19,23 @@ export default function Dashboard() {
 
   const onClickMethod = (event: any) => {
     setIsMethod((prev) => !prev);
-    setButtonEvent(event.target);
+    // setButtonEvent(event.target);
   };
 
   const onClickMaterial = (event: any) => {
-    setIsMethod((prev) => !prev);
-    setButtonEvent(event.target);
+    setIsMaterial((prev) => !prev);
+    // setButtonEvent(event.target);
   };
 
-  window.addEventListener("click", (e) => handleClose(e));
+  // window.addEventListener("click", (e) => handleClose(e));
 
-  const handleClose = (event: any) => {
-    if (buttonEvent !== event.target) {
-      setIsMethod(false);
-    } else {
-      setIsMethod(true);
-    }
-  };
+  // const handleClose = (event: any) => {
+  //   if (buttonEvent !== event.target) {
+  //     setIsMethod(false);
+  //   } else {
+  //     setIsMethod(true);
+  //   }
+  // };
   // useEffect(() => {
   //   const onClickMethod = () => {
 
@@ -48,6 +46,11 @@ export default function Dashboard() {
   const materials: string[] = ["알루미늄", "탄소강", "구리", "합금강", "강철"];
   const [checkedList, setCheckedLists] = useState<string[]>([]);
 
+  const [methodsCheckedList, setMethodsCheckedList] = useState<string[]>([]);
+  const [materialsCheckedList, setMaterialsCheckedList] = useState<string[]>(
+    []
+  );
+
   const onChangedChecked = (el: any) => (event: any) => {
     if (event.target.checked) {
       setCheckedLists([...checkedList, el]);
@@ -56,7 +59,33 @@ export default function Dashboard() {
     }
   };
 
-  console.log(checkedList);
+  const onChangedMethodChecked = (el: any) => (event: any) => {
+    if (event.target.checked) {
+      setMethodsCheckedList([...methodsCheckedList, el]);
+    } else {
+      setMethodsCheckedList(
+        methodsCheckedList.filter((keyword) => keyword !== el)
+      );
+    }
+  };
+
+  const onChangedMaterialChecked = (el: any) => (event: any) => {
+    if (event.target.checked) {
+      setMaterialsCheckedList([...materialsCheckedList, el]);
+    } else {
+      setMaterialsCheckedList(
+        materialsCheckedList.filter((keyword) => keyword !== el)
+      );
+    }
+  };
+
+  const onClickRefresh = () => {
+    setMethodsCheckedList([]);
+    setMaterialsCheckedList([]);
+    setIsMaterial(false);
+    setIsMethod(false);
+  };
+
   return (
     <DashboardUI
       stores={stores}
@@ -64,14 +93,20 @@ export default function Dashboard() {
       materials={materials}
       onList={onList}
       checkedList={checkedList}
+      methodsCheckedList={methodsCheckedList}
+      materialsCheckedList={materialsCheckedList}
       isOn={isOn}
       isMethod={isMethod}
       isMaterial={isMaterial}
       setIsOn={setIsOn}
       setIsMaterial={setIsMaterial}
+      setCheckedList={setCheckedLists}
       onClickMethod={onClickMethod}
       onClickMaterial={onClickMaterial}
       onChangedChecked={onChangedChecked}
+      onChangedMethodChecked={onChangedMethodChecked}
+      onChangedMaterialChecked={onChangedMaterialChecked}
+      onClickRefresh={onClickRefresh}
     />
   );
 }

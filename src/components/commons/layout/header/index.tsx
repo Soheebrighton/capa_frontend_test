@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { ReactComponent as Logo } from "../../commons/icons/CAPA.svg";
-import { ReactComponent as Icon } from "../../commons/icons/icon_company.svg";
+import { ReactComponent as Logo } from "../../icons/CAPA.svg";
+import { ReactComponent as Icon } from "../../icons/icon_company.svg";
 
 const Wrapper = styled.header`
   background-color: #1565c0;

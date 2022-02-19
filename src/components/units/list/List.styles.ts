@@ -77,3 +77,15 @@ export const Buttons = styled.div`
   flex-direction: row;
   /* padding-bottom: 24px; */
 `;
+
+export const EmptyContainer = styled.div`
+  border: 1px solid #c2c2c2;
+  border-radius: 4px;
+  color: #939fa5;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
