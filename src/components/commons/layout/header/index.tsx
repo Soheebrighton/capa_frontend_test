@@ -92,7 +92,7 @@ export default function Header() {
         >
           <Menu>
             <MenuHeader>
-              <img src={"/images/CAPA_partners_colorlogo 1.png"} />
+              <img src={"/images/CAPA_partners_colorlogo 1.png"} alt="logo" />
             </MenuHeader>
             <MenuOption>
               <Icon style={{ paddingRight: "8px", fill: "#323d45" }} />
