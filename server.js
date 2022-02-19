@@ -2,7 +2,7 @@
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
-const middlewares = jsonServer.defaults();
+const middlewares = jsonServer.defaults({ static: "./build" });
 
 // db.json를 조작하기 위해 lowdb를 사용
 const low = require("lowdb");
