@@ -8,7 +8,7 @@ interface IPropsList {
 }
 
 export default function List(props: IPropsList) {
-  const countList = props.stores.length;
+  const countList: number = props.stores.length;
 
   return (
     <>

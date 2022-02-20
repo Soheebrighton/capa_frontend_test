@@ -124,6 +124,12 @@ export const RefreshBtn = styled.div`
   cursor: pointer;
 `;
 
+export const RefreshTxt = styled.div`
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
 export const Toggles = styled.div`
   display: flex;
   flex-direction: row;

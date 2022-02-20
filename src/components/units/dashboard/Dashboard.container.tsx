@@ -12,9 +12,9 @@ export default function Dashboard() {
   const [stores, setStores] = useState<any[]>([]);
   const onList = stores.filter((el: any) => el.status === "상담중");
 
-  const [isOn, setIsOn] = useState(false);
-  const [isMethod, setIsMethod] = useState(false);
-  const [isMaterial, setIsMaterial] = useState(false);
+  const [isOn, setIsOn] = useState<boolean>(false);
+  const [isMethod, setIsMethod] = useState<boolean>(false);
+  const [isMaterial, setIsMaterial] = useState<boolean>(false);
 
   const methods: string[] = ["밀링", "선반"];
   const materials: string[] = ["알루미늄", "탄소강", "구리", "합금강", "강철"];

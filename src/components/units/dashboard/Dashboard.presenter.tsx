@@ -73,7 +73,7 @@ export default function DashboardUI(props: IPropsDashboardUI) {
               ) && (
                 <S.RefreshBtn onClick={props.onClickRefresh}>
                   <S.IconRefresh />
-                  필터링 리셋
+                  <S.RefreshTxt>필터링 리셋</S.RefreshTxt>
                 </S.RefreshBtn>
               )}
             </S.Selections>
