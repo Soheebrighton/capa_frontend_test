@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Dashboard() {
   useEffect(() => {
-    axios.get("http://localhost:5000/db").then((data) => {
+    axios.get("https://capa-test.herokuapp.com/db").then((data) => {
       setStores(data.data.requests);
     });
   }, []);
